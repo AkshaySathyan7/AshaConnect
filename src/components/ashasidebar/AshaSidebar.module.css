@@ -1,0 +1,90 @@
+/* General Styling for Sidebar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
+  width: 250px;
+  background: linear-gradient(135deg, #00bcd4, #008c9e);  /* Soft gradient background */
+  color: #ffffff;  /* Light text for contrast */
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);  /* Soft shadow for depth */
+  border-right: 2px solid #008c9e;  /* Sleek border */
+  padding-top: 30px;
+  padding-left: 30px;
+  transition: all 0.3s ease-in-out; /* Smooth transition on hover */
+}
+
+.sidebar .logo span {
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin-bottom: 40px;  /* Space between logo and links */
+  text-transform: uppercase;
+}
+
+.sidebarLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;  /* Vertical gap between links */
+}
+
+.sidebarLink {
+  text-decoration: none;
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between icon and text */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Hover Effect for Sidebar Links */
+.sidebarLink:hover {
+  color: #ffeb3b;  /* Yellow accent color on hover */
+  transform: scale(1.05);  /* Slight zoom effect for interactivity */
+}
+
+.sidebarLink:hover .icon {
+  color: #ffeb3b;  /* Change icon color on hover */
+}
+
+/* Icon styling */
+.icon {
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+/* Underline Animation on Hover */
+.sidebarLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ffeb3b;  /* Underline color */
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.sidebarLink:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.sidebarLink:focus {
+  outline: none;  /* Remove default outline */
+  border-bottom: 2px solid #ffeb3b;  /* Border on focus for better accessibility */
+}

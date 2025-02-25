@@ -1,0 +1,118 @@
+/* Footer Section */
+.footer {
+  background: linear-gradient(to bottom, #ffffff, #f3f4f6);  /* Light gradient */
+  padding: 60px 20px;
+  color: #333;
+  text-align: left;
+}
+
+.footerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footerSection {
+  width: 22%;
+  margin-bottom: 40px;
+}
+
+.footerTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #64b3f4;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.footerList {
+  list-style: none;
+  padding: 0;
+}
+
+.footerList li {
+  margin-bottom: 10px;
+}
+
+.footerList a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerList a:hover {
+  color: #64b3f4;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 15px;
+}
+
+.socialIcon {
+  font-size: 28px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.socialIcon:hover {
+  color: #64b3f4;
+}
+
+.newsletterForm {
+  display: flex;
+  gap: 10px;
+}
+
+.newsletterInput {
+  padding: 12px;
+  width: 70%;
+  border: 2px solid #64b3f4;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+.newsletterButton {
+  padding: 12px 25px;
+  background-color: #64b3f4;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.newsletterButton:hover {
+  background-color: #2f72ba;
+}
+
+/* Footer Copyright */
+.footerCopyright {
+  background-color: #64b3f4;
+  text-align: center;
+  padding: 20px;
+  color: white;
+  font-size: 14px;
+}
+
+.footerCopyright p {
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footerContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footerSection {
+    width: 100%;
+    text-align: center;
+  }
+}

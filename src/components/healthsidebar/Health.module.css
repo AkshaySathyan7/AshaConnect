@@ -1,0 +1,103 @@
+/* General Sidebar Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;  /* Clean modern font */
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100vh;
+    width: 260px;  /* Adequate width for icons and text */
+    background: linear-gradient(to bottom right, #00bcd4, #8e44ad);  /* Vibrant gradient from teal to purple */
+    color: #f5f5f5;  /* Light text for contrast */
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.1);  /* Light shadow for depth */
+    border-right: 2px solid #8e44ad;  /* Border matching the purple tone */
+    padding-top: 40px;
+    padding-left: 30px;
+    transition: all 0.3s ease-in-out;
+    z-index: 999;  /* Ensures sidebar stays above content */
+}
+
+/* Logo Section (optional, you can add a logo if needed) */
+.sidebar .logo span {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+/* Sidebar Links Section */
+.sidebarLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;  /* Adequate gap between links */
+}
+
+.sidebarLink {
+    text-decoration: none;
+    font-size: 18px;
+    color: #f5f5f5;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 18px;  /* Adequate gap between icon and text */
+    transition: transform 0.3s ease, color 0.3s ease, margin-left 0.3s ease;
+}
+
+/* Hover Effect for Sidebar Links */
+.sidebarLink:hover {
+    color: #f39c12;  /* Gold accent on hover */
+    transform: translateX(10px);  /* Smooth slide effect */
+    margin-left: 10px;  /* Adds a sliding effect */
+}
+
+.sidebarLink:hover .icon {
+    color: #f39c12;  /* Change icon color on hover */
+}
+
+/* Icon Styling */
+.icon {
+    font-size: 24px;  /* Increased icon size for clarity */
+    color: #f5f5f5;  /* Icon starts as white */
+    transition: color 0.3s ease;
+}
+
+/* Underline Animation on Hover */
+.sidebarLink::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #f39c12;  /* Underline color to match hover effect */
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.sidebarLink:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Focus Effect */
+.sidebarLink:focus {
+    outline: none;  /* Remove default outline */
+    border-bottom: 2px solid #f39c12;  /* Underline on focus */
+}
+
+/* Active link styling (optional) */
+.sidebarLink.active {
+    color: #f39c12;  /* Active link color */
+    font-weight: 700;  /* Bold the active link */
+}
