@@ -1,90 +1,47 @@
 import React from "react";
 import { Grid, Card, CardContent, Typography, Box, Paper } from "@mui/material";
-import { AccessTime, Person, TaskAlt, CheckCircle } from "@mui/icons-material"; // Icons
 import "./main.module.css"; // Importing the updated CSS file
+import { styled } from '@mui/material/styles';
+import Styles from './main.module.css'
+import AdminAshaworker from "../ashaworker/ashaworker";
+import { Link } from "react-router-dom";
 
-const AdminDashboard = () => {
+
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+  ...theme.applyStyles('dark', {
+    backgroundColor: '#1A2027',
+  }),
+}));
+
+const AdminDashboardMain = () => {
   return (
-    <Box className="gridContainer">
-      <Grid container spacing={4}>
-        {/* Total Workers Card */}
-        <Grid item xs={12} sm={6} md={3}>
-          <Card className="card">
-            <CardContent className="cardWrapper">
-              <Box className="cardIconWrapper">
-                <Box className="cardIcon">
-                  <Person fontSize="large" />
-                </Box>
-              </Box>
-              <Box className="cardContent">
-                <div>
-                  <Typography className="cardTitle">Total Workers</Typography>
-                  <Typography className="cardNumber">150</Typography>
-                </div>
-              </Box>
-            </CardContent>
-          </Card>
-        </Grid>
+    <Box sx={{ width: '70%', marginLeft:'18%', paddingLeft:'5%', marginTop:'-67%' }}>
+      <Grid container rowSpacing={5} columnSpacing={{ xs: 1, sm: 25, md: 3 }}>
+        <Grid item xs={6}>
+          <Item><h2><i>Add Places</i></h2><br/>
+          Click Below<br/>
+          <Link to="AdminAshaworker" className={Styles.heroButton}>Asha Worker</Link>
 
-        {/* Tasks Completed Card */}
-        <Grid item xs={12} sm={6} md={3}>
-          <Card className="card">
-            <CardContent className="cardWrapper">
-              <Box className="cardIconWrapper">
-                <Box className="cardIcon">
-                  <TaskAlt fontSize="large" />
-                </Box>
-              </Box>
-              <Box className="cardContent">
-                <div>
-                  <Typography className="cardTitle">Tasks Completed</Typography>
-                  <Typography className="cardNumber">1200</Typography>
-                </div>
-              </Box>
-            </CardContent>
-          </Card>
+          </Item>
         </Grid>
-
-        {/* Pending Tasks Card */}
-        <Grid item xs={12} sm={6} md={3}>
-          <Card className="card">
-            <CardContent className="cardWrapper">
-              <Box className="cardIconWrapper">
-                <Box className="cardIcon">
-                  <AccessTime fontSize="large" />
-                </Box>
-              </Box>
-              <Box className="cardContent">
-                <div>
-                  <Typography className="cardTitle">Pending Tasks</Typography>
-                  <Typography className="cardNumber">250</Typography>
-                </div>
-              </Box>
-            </CardContent>
-          </Card>
+        <Grid item xs={6}>
+          <Item><h2><i>Manage Healh Centers</i></h2><br/>Click Below</Item>
         </Grid>
-
-        {/* Active Workers Card */}
-        <Grid item xs={12} sm={6} md={3}>
-          <Card className="card">
-            <CardContent className="cardWrapper">
-              <Box className="cardIconWrapper">
-                <Box className="cardIcon">
-                  <CheckCircle fontSize="large" />
-                </Box>
-              </Box>
-              <Box className="cardContent">
-                <div>
-                  <Typography className="cardTitle">Active Workers</Typography>
-                  <Typography className="cardNumber">120</Typography>
-                </div>
-              </Box>
-            </CardContent>
-          </Card>
+        <Grid item xs={6}>
+          <Item><h2><i>Manage Asha Worker</i></h2><br/>Click Below</Item>
+        </Grid>
+        <Grid item xs={6}>
+          <Item><h2><i>Monitor Health Data</i></h2><br/>Click Below</Item>
         </Grid>
       </Grid>
     </Box>
   );
 };
 
-export default AdminDashboard;
+export default AdminDashboardMain;

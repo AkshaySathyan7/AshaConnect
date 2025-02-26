@@ -5,6 +5,7 @@ import Footer from '../../components/footer/footer'
 import AdminRoutes from '../../routes/AdminRoutes'
 import Sidebar from '../../components/sidebar/sidebar'
 import AdminDashboardMain from './main/main'
+import AdminAshaworker from './ashaworker/ashaworker'
 
 
 
@@ -14,8 +15,10 @@ const AdminLog = () => {
     <div>
    <Navbar/>
    <Sidebar/>
-   <AdminDashboardMain/>
    <Footer/>
+   <AdminDashboardMain/>
+
+
    <AdminRoutes/>
 
    </div>
