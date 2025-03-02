@@ -31,7 +31,9 @@ const AdminDashboardMain = () => {
           </Item>
         </Grid>
         <Grid item xs={6}>
-          <Item><h2><i>Manage Healh Centers</i></h2><br/>Click Below</Item>
+          <Item><h2><i>Manage Healh Centers</i></h2><br/>Click Below<br/>
+          <Link to="Adminhealthstaff" className={Styles.heroButton}>Health Staff</Link>
+          </Item>
         </Grid>
         <Grid item xs={6}>
           <Item><h2><i>Manage Asha Worker</i></h2><br/>Click Below</Item>

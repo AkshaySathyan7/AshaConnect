@@ -16,7 +16,7 @@ const AdminLog = () => {
    <Footer/>
 
 
-
+      
    </div>
   )
 }
