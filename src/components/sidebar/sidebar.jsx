@@ -1,6 +1,6 @@
 import React from 'react';
-import { FaTachometerAlt, FaUsers, FaClipboardList, FaChartBar, FaCog, FaSignOutAlt } from 'react-icons/fa'; // Adding icons for sidebar items
-import { Link } from 'react-router-dom';  // Import Link for navigation
+import { FaTachometerAlt, FaUsers, FaClipboardList, FaChartBar, FaCog, FaSignOutAlt } from 'react-icons/fa'; 
+import { Link } from 'react-router-dom';  
 import Styles from './sidebar.module.css';
 
 const Sidebar = () => {
@@ -15,7 +15,7 @@ const Sidebar = () => {
           <FaUsers className={Styles.icon} /> Health Staff
         </Link>
         <Link to="#tasks" className={Styles.sidebarLink}>
-          <FaClipboardList className={Styles.icon} /> Add Place
+          <FaClipboardList className={Styles.icon} /> Emergency Status
         </Link>
         <Link to="#reports" className={Styles.sidebarLink}>
           <FaChartBar className={Styles.icon} /> Health Data

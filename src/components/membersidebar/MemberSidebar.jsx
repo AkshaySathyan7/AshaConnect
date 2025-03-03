@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaTachometerAlt, FaClipboardList, FaBell, FaUserAlt, FaSignOutAlt } from 'react-icons/fa'; // Importing relevant icons
+import { FaTachometerAlt, FaClipboardList, FaBell, FaUsers, FaPhoneAlt, FaUserCircle, FaSignOutAlt } from 'react-icons/fa'; // Updated with more relevant icons
+import { Link } from 'react-router-dom'; // Importing Link for routing
 import Styles from './Member.module.css';
 
 const AshaSidebar = () => {
@@ -7,21 +8,27 @@ const AshaSidebar = () => {
     <div className={Styles.sidebar}>
       {/* Sidebar Links Section */}
       <div className={Styles.sidebarLinks}>
-        <a href="#dashboard" className={Styles.sidebarLink}>
-          <FaTachometerAlt className={Styles.icon} /> Dashboard
-        </a>
-        <a href="#tasks" className={Styles.sidebarLink}>
-          <FaClipboardList className={Styles.icon} /> Tasks
-        </a>
-        <a href="#notifications" className={Styles.sidebarLink}>
+        <Link to="/notifications" className={Styles.sidebarLink}>
           <FaBell className={Styles.icon} /> Notifications
-        </a>
-        <a href="#profile" className={Styles.sidebarLink}>
-          <FaUserAlt className={Styles.icon} /> Profile
-        </a>
-        <a href="#logout" className={Styles.sidebarLink}>
+        </Link>
+        <Link to="/health-report" className={Styles.sidebarLink}>
+          <FaClipboardList className={Styles.icon} /> Health Report
+        </Link>
+        <Link to="/chat" className={Styles.sidebarLink}>
+          <FaBell className={Styles.icon} /> Chat
+        </Link>
+        <Link to="/group-chat" className={Styles.sidebarLink}>
+          <FaUsers className={Styles.icon} /> Group Chat
+        </Link>
+        <Link to="/emergency-contact" className={Styles.sidebarLink}>
+          <FaPhoneAlt className={Styles.icon} /> Emergency Contact
+        </Link>
+        <Link to="/profile" className={Styles.sidebarLink}>
+          <FaUserCircle className={Styles.icon} /> Profile
+        </Link>
+        <Link to="/logout" className={Styles.sidebarLink}>
           <FaSignOutAlt className={Styles.icon} /> Logout
-        </a>
+        </Link>
       </div>
     </div>
   );

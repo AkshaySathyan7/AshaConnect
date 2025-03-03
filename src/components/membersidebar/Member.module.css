@@ -10,6 +10,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  margin-top: 4%;
+  padding-right: 1%;
   height: 100vh;
   width: 260px;  /* Slightly wider for more space */
   background: linear-gradient(135deg, #4caf50, #1b5e20);  /* Vibrant green gradient for a fresh, clean look */
