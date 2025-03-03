@@ -8,10 +8,10 @@ const Sidebar = () => {
     <div className={Styles.sidebar}>
       {/* Sidebar Links Section */}
       <div className={Styles.sidebarLinks}>
-        <Link to="AdminAshaworker" className={Styles.sidebarLink}>
+        <Link to="/admin/AdminAshaworker" className={Styles.sidebarLink}>
           <FaTachometerAlt className={Styles.icon} /> Asha Worker
         </Link>
-        <Link to="Adminhealthstaff" className={Styles.sidebarLink}>
+        <Link to="/admin/Adminhealthstaff" className={Styles.sidebarLink}>
           <FaUsers className={Styles.icon} /> Health Staff
         </Link>
         <Link to="#tasks" className={Styles.sidebarLink}>

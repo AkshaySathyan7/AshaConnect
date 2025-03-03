@@ -11,9 +11,9 @@ const AdminRoutes = () => {
   return (
     <Routes>
     <Route path='/' element={<AdminDashboardMain/>} />  
-    <Route path='admin/*' element={<AdminLog/>} />
-    <Route path='/AdminAshaworker' element={<AdminAshaworker/>} />
-    <Route path='/Adminhealthstaff' element={<Adminhealthstaff/>} />
+    <Route path='/admin' element={<AdminLog/>} />
+    <Route path='AdminAshaworker' element={<AdminAshaworker/>} />
+    <Route path='Adminhealthstaff' element={<Adminhealthstaff/>} />
 
 
 

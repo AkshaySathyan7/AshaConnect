@@ -12,6 +12,7 @@
     align-items: flex-start;
     height: 100vh;
     width: 250px;
+    margin-top: 4%;
     background: linear-gradient(135deg, #0073e6, #004bb5);  /* Gradient background */
     color: #ffffff;  /* Light text for contrast */
     box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);  /* Enhanced shadow for depth */

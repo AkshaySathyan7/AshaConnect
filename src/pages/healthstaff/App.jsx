@@ -2,8 +2,8 @@
 import React from 'react'
 import Navbar from '../../components/navbar/navbar'
 import Footer from '../../components/footer/footer'
-import AshaRoutes from '../../routes/AshaRoutes'
 import HealthcareSidebar from '../../components/healthsidebar/HealthSidebar'
+import HealthRoutes from '../../routes/HealthStaffRoutes'
 
 
 
@@ -14,7 +14,7 @@ const HealthLog = () => {
    <Navbar/>
    <HealthcareSidebar/>
    <Footer/>
-   <AshaRoutes/>
+   <HealthRoutes/>
 
 
    </div>
