@@ -1,0 +1,16 @@
+.heroButton {
+  padding: 12px 30px;
+  background-color: #ff6f00;  /* Vibrant orange accent */
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 50px;
+  font-size: 18px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.heroButton:hover {
+  background-color: #ff7f32;
+  transform: scale(1.05);
+}

@@ -4,6 +4,7 @@ import AdminLog from '../pages/admin/App'
 import AdminAshaworker from '../pages/admin/ashaworker/ashaworker'
 import AdminDashboardMain from '../pages/admin/main/main'
 import Adminhealthstaff from '../pages/admin/healthstaff/healthstaff'
+import Addasha from '../pages/admin/ashaworker/addasha/addasha'
 
 
 
@@ -14,6 +15,8 @@ const AdminRoutes = () => {
     <Route path='/admin' element={<AdminLog/>} />
     <Route path='AdminAshaworker' element={<AdminAshaworker/>} />
     <Route path='Adminhealthstaff' element={<Adminhealthstaff/>} />
+    <Route path='Addasha' element={<Addasha/>} />
+
 
 
 

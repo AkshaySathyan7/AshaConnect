@@ -57,8 +57,8 @@
 /* Hover Effect for Sidebar Links */
 .sidebarLink:hover {
     color: #f39c12;  /* Gold accent on hover */
-    transform: translateX(10px);  /* Smooth slide effect */
-    margin-left: 10px;  /* Adds a sliding effect */
+    transform: translateX(4px);  /* Smooth slide effect */
+    margin-left: 9px;  /* Adds a sliding effect */
 }
 
 .sidebarLink:hover .icon {

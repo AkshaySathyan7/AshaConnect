@@ -16,6 +16,7 @@ const LandingPage = () => {
           </p>
           {/* Change <a> tag to <Link> */}
           <Link to="/login" className={Styles.heroButton}>Login</Link>
+
         </div>
       </section>
 

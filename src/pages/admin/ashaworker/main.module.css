@@ -8,3 +8,22 @@ h2{
    text-align: center;
    margin-bottom: 3%;
 }
+.heroButton {
+   text-align: center;
+   padding: 15px;
+   background-color: #ff6f00; /* Vibrant orange accent */
+   color: white;
+   font-weight: bold;
+   border-radius: 50px;
+   font-size: 18px;
+   cursor: pointer;
+   border: none;
+   transition: background-color 0.3s ease, transform 0.3s ease;
+   margin-top: 20px;
+   width: 20%;
+   margin-left: 40%;
+}
+
+.heroButton:hover {
+   transform: scale(1.1); /* Add hover effect */
+}

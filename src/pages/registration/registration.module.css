@@ -1,0 +1,151 @@
+/* Page Wrapper */
+.pageWrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f9fafb;
+  }
+  
+  /* Registration Section */
+  .registrationSection {
+    flex: 1;
+    display: flex;
+    margin-top: 3%;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background-image: url('/assets/asha-worker-background.jpg'); /* Add your background image */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  /* Overlay for the Registration Section */
+  .registrationSection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* Light overlay for readability */
+    z-index: 1;
+  }
+  
+  .registrationFormWrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .formHeader {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .userIcon {
+    font-size: 48px;
+    color: #4a90e2;
+    margin-bottom: 15px;
+  }
+  
+  .sectionTitle {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Row for Two Input Fields */
+  .row {
+    display: flex;
+    gap: 20px; /* Space between the two input fields */
+    margin-bottom: 20px;
+  }
+  
+  .row .inputGroup {
+    flex: 1; /* Each input group takes equal space */
+  }
+  
+  .inputGroup {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .inputGroup label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  .inputField {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  
+  .inputField:focus {
+    border-color: #4a90e2;
+    outline: none;
+  }
+  
+  .submitButton {
+    width: 100%;
+    padding: 14px;
+    background-color: #4a90e2;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 16px;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .submitButton:hover {
+    background-color: #357abd;
+    transform: translateY(-2px);
+  }
+  
+  .alreadyMember {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+  }
+  
+  .loginLink {
+    color: #4a90e2;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .loginLink:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .row {
+      flex-direction: column; /* Stack inputs vertically on smaller screens */
+      gap: 0;
+    }
+  
+    .registrationFormWrapper {
+      padding: 30px;
+    }
+  
+    .sectionTitle {
+      font-size: 24px;
+    }
+  }

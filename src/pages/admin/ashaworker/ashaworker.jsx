@@ -16,6 +16,7 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { Link } from "react-router-dom";
 
 
 function createData(name, calories, fat, carbs, protein, price) {
@@ -137,6 +138,15 @@ const AdminAshaworker = () => {
   return (
     <div className={Styles.boxes}>
       <h2>Asha Workers</h2>
+      <div className={Styles.signupText}>
+
+      <button 
+  onClick={() => window.location.href = '/admin/Addasha'} 
+  className={Styles.heroButton}
+>
+ Add Asha Worker
+</button>
+</div>
  <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
         <TableHead>

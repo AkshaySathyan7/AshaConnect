@@ -31,6 +31,10 @@ axios.post("http://localhost:5005/Login", data)
           sessionStorage.setItem("aid", id);
           navigate("/admin");
         }
+        if (login === "Member") {
+          sessionStorage.setItem("aid", id);
+          navigate("/member");
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -83,7 +87,7 @@ axios.post("http://localhost:5005/Login", data)
           <button type="submit" className={Styles.loginButton}>Login</button>
         </form>
         <p className={Styles.signupText}>
-          Don't have an account? <Link to="/signup" className={Styles.signupLink}>Sign Up</Link>
+          Don't have an account? <Link to="/register" className={Styles.signupLink}>Sign Up</Link>
         </p>
       </section>
     </div>
