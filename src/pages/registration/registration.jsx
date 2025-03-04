@@ -8,7 +8,7 @@ import axios from 'axios';  // Don't forget to import axios
 
 const RegistrationPage = () => {
   const navigate = useNavigate();
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,7 +27,6 @@ const RegistrationPage = () => {
 
   // Helper function to validate password strength
   const validatePassword = (password) => {
-    // Password should be at least 8 characters and contain one uppercase, one lowercase, and one number
     return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/.test(password);
   };
 
@@ -57,21 +56,16 @@ const RegistrationPage = () => {
       setMessage('Phone number must be exactly 10 digits.');
       return;
     }
-console.log(formData);
-    const formDataToSend = new FormData();
-    formDataToSend.append('name', formData.name);
-    formDataToSend.append('email', formData.email);
-    formDataToSend.append('address', formData.address);
-    formDataToSend.append('contact', formData.contact);  
-    formDataToSend.append('place', formData.place);
-    formDataToSend.append('ward', formData.ward);
-    formDataToSend.append('password', formData.password);
-    formDataToSend.append('dob', formData.dob);
+
+    console.log(formData);
 
     try {
-      const response = await axios.post('http://localhost:5005/UserReg', formDataToSend);
+      // Sending JSON data instead of FormData
+      const response = await axios.post("http://localhost:5005/UserReg", formData);
+
+      // Show success message and navigate to the login page
+      alert("Registration successful!");
       setMessage('Registration successful!');
-      console.log('Registration successful:', response.data);
       setFormData({
         name: '',
         email: '',
@@ -81,11 +75,12 @@ console.log(formData);
         dob: '',
         place: '',
         ward: '',
-      }); 
+      });
+
+      // Navigate to login page after successful registration
       navigate("/login");
     } catch (error) {
       setMessage('Error registering. Please try again.');
-      console.error('Error registering:', error);
     }
   };
 

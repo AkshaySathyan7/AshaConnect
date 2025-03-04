@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Styles from '../addasha/addasha.module.css'; // Import the CSS module
+import Axios from 'axios';
+import Styles from './Addasha.module.css'; // Import the CSS module
 
 const Addasha = () => {
   // State to manage the form inputs
@@ -10,9 +11,10 @@ const Addasha = () => {
   const [wardNumber, setWardNumber] = useState('');
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Prepare data to send to the backend
     const newAshaWorker = {
       ashaWorkerName,
       place,
@@ -20,16 +22,21 @@ const Addasha = () => {
       password,
       wardNumber
     };
-
-    // Replace with actual POST request to your server to save the data
-    console.log(newAshaWorker);
-
-    // Reset form after submission
-    setAshaWorkerName('');
-    setPlace('');
-    setEmail('');
-    setPassword(email); // Reset password to email again after submission
-    setWardNumber('');
+    try {
+      // Send a POST request to the backend
+      const response = await Axios.post('http://localhost:5005/AddAsha', newAshaWorker);
+      console.log(response.data.message); // Or you can show an alert
+      alert('Asha Worker added successfully!');
+      
+      // Optionally, reset form after submission
+      setAshaWorkerName('');
+      setPlace('');
+      setEmail('');
+      setPassword('');
+      setWardNumber('');
+    } catch (err) {
+      alert('Error adding Asha Worker');
+    }
   };
 
   return (
