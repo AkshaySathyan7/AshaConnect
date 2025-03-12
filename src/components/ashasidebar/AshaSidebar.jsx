@@ -9,7 +9,7 @@ const AshaSidebar = () => {
       {/* Sidebar Links Section */}
       <div className={Styles.sidebarLinks}>
         
-        <Link to="/community-members" className={Styles.sidebarLink}>
+        <Link to="/asha/MembersView" className={Styles.sidebarLink}>
           <FaUsers className={Styles.icon} /> Community Members
         </Link>
         <Link to="/health-monitoring" className={Styles.sidebarLink}>
@@ -27,10 +27,10 @@ const AshaSidebar = () => {
         <Link to="/health-resources" className={Styles.sidebarLink}>
           <FaHeart className={Styles.icon} /> Health Resources
         </Link>
-        <Link to="/profile" className={Styles.sidebarLink}>
+        <Link to="/asha/UpdateAsha" className={Styles.sidebarLink}>
           <FaUserCircle className={Styles.icon} /> Profile
         </Link>
-        <Link to="/logout" className={Styles.sidebarLink}>
+        <Link to="/Logout" className={Styles.sidebarLink}>
           <FaSignOutAlt className={Styles.icon} /> Logout
         </Link>
       </div>

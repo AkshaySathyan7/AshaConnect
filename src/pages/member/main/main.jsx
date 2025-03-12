@@ -20,7 +20,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const MemberMain = () => {
   return (
-    <Box sx={{ width: '70%', marginLeft:'18%', paddingLeft:'5%', marginTop:'-67%' }}>
+    <Box sx={{ width: '70%', marginLeft:'18%', paddingLeft:'5%', marginTop:'-40%', marginBottom:'9%' }}>
       <Grid container rowSpacing={5} columnSpacing={{ xs: 1, sm: 25, md: 3 }}>
         <Grid item xs={6}>
           <Item><h2><i>Add Places</i></h2><br/>

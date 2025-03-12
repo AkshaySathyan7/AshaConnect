@@ -35,6 +35,16 @@ axios.post("http://localhost:5005/Login", data)
           sessionStorage.setItem("aid", id);
           navigate("/member");
         }
+
+        if (login === "staff") {
+          sessionStorage.setItem("aid", id);
+          navigate("/staff");
+        }
+
+        if (login === "asha") {
+          sessionStorage.setItem("aid", id);
+          navigate("/asha");
+        }
       })
       .catch((err) => {
         console.error(err);

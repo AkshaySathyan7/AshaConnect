@@ -6,15 +6,14 @@ import Styles from './Member.module.css';
 const AshaSidebar = () => {
   return (
     <div className={Styles.sidebar}>
-      {/* Sidebar Links Section */}
       <div className={Styles.sidebarLinks}>
         <Link to="/notifications" className={Styles.sidebarLink}>
           <FaBell className={Styles.icon} /> Notifications
         </Link>
-        <Link to="/health-report" className={Styles.sidebarLink}>
+        <Link to="/member/HealthReport" className={Styles.sidebarLink}>
           <FaClipboardList className={Styles.icon} /> Health Report
         </Link>
-        <Link to="/chat" className={Styles.sidebarLink}>
+        <Link to="/member/ChatSingle" className={Styles.sidebarLink}>
           <FaBell className={Styles.icon} /> Chat
         </Link>
         <Link to="/group-chat" className={Styles.sidebarLink}>
@@ -23,7 +22,7 @@ const AshaSidebar = () => {
         <Link to="/emergency-contact" className={Styles.sidebarLink}>
           <FaPhoneAlt className={Styles.icon} /> Emergency Contact
         </Link>
-        <Link to="/profile" className={Styles.sidebarLink}>
+        <Link to="/member/UpdateMember" className={Styles.sidebarLink}>
           <FaUserCircle className={Styles.icon} /> Profile
         </Link>
         <Link to="/logout" className={Styles.sidebarLink}>

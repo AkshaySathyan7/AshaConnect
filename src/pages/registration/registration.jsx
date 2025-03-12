@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Styles from '../registration/registration.module.css';
 import { FaUserPlus } from 'react-icons/fa';  // Added a user icon
@@ -16,11 +16,13 @@ const RegistrationPage = () => {
     contact: '',
     password: '',
     dob: '',
-    place: '',
-    ward: ''
+    place: '',  // Default value
+    ward: '',
+    status: '' 
   });
 
   const [message, setMessage] = useState('');
+  const [wardOptions, setWardOptions] = useState([]);
 
   // Helper function to validate email format
   const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
@@ -36,6 +38,20 @@ const RegistrationPage = () => {
       ...formData,
       [name]: value,
     });
+
+    // Update ward options when "place" changes
+    if (name === "place") {
+      let wardRange = [];
+      if (value === "Muvattupuzha") {
+        wardRange = Array.from({ length: 7 }, (_, i) => i + 1);
+      } else if (value === "Valakom") {
+        wardRange = Array.from({ length: 5 }, (_, i) => i + 1);
+      } else if (value === "Anicadu") {
+        wardRange = Array.from({ length: 6 }, (_, i) => i + 1);
+      }
+      setWardOptions(wardRange);
+      setFormData(prevFormData => ({ ...prevFormData, ward: '' })); // Reset ward number when place changes
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -75,6 +91,7 @@ const RegistrationPage = () => {
         dob: '',
         place: '',
         ward: '',
+        status:'' 
       });
 
       // Navigate to login page after successful registration
@@ -162,30 +179,36 @@ const RegistrationPage = () => {
             <div className={Styles.row}>
               <div className={Styles.inputGroup}>
                 <label htmlFor="place">Place</label>
-                <input 
-                  type="text" 
+                <select 
                   id="place" 
                   name="place" 
-                  value={formData.place} 
+                  value={formData.place}  // This ensures the selected value is displayed
                   onChange={handleChange} 
                   required
-                  className={Styles.inputField} 
-                  placeholder="Enter your place here"
-                />
+                  className={Styles.inputField}
+                >
+                  <option value="">Select your place</option>
+                  <option value="Muvattupuzha">Muvattupuzha</option>
+                  <option value="Valakom">Valakom</option>
+                  <option value="Anicadu">Anicadu</option>
+                </select>
               </div>
 
               <div className={Styles.inputGroup}>
                 <label htmlFor="ward">Ward Number</label>
-                <input 
-                  type="number" 
+                <select 
                   id="ward" 
                   name="ward" 
                   value={formData.ward} 
                   onChange={handleChange} 
                   required
-                  className={Styles.inputField} 
-                  placeholder="Enter your Ward Number"
-                />
+                  className={Styles.inputField}
+                >
+                  <option value="">Select your ward number</option>
+                  {wardOptions.map((ward) => (
+                    <option key={ward} value={ward}>{ward}</option>
+                  ))}
+                </select>
               </div>
             </div>
 
@@ -215,6 +238,17 @@ const RegistrationPage = () => {
                 placeholder="Create a password"
               />
             </div>
+            {/* <div className={Styles.inputGroup}>
+              <label htmlFor="status"></label>
+              <input 
+                type="text" 
+                id="status" 
+                name="status" 
+                value="pending" 
+                onChange={handleChange} 
+                className={Styles.inputField} 
+              />
+            </div> */}
 
             <button type="submit" className={Styles.submitButton}>Register</button>
           </form>

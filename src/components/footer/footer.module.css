@@ -1,14 +1,14 @@
-/* Footer Section */
 .footer {
   background: linear-gradient(to bottom, #ffffff, #f3f4f6);  /* Light gradient */
   padding: 60px 20px;
   color: #333;
   text-align: left;
+  margin-top: auto;
 }
 
 .footerContainer {
   max-width: 1200px;
-  margin: 0 auto;
+  margin:auto;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;

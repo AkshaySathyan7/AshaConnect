@@ -5,6 +5,7 @@ import AdminAshaworker from '../pages/admin/ashaworker/ashaworker'
 import AdminDashboardMain from '../pages/admin/main/main'
 import Adminhealthstaff from '../pages/admin/healthstaff/healthstaff'
 import Addasha from '../pages/admin/ashaworker/addasha/addasha'
+import Addhealth from '../pages/admin/healthstaff/addhealth/addhealth'
 
 
 
@@ -16,6 +17,8 @@ const AdminRoutes = () => {
     <Route path='AdminAshaworker' element={<AdminAshaworker/>} />
     <Route path='Adminhealthstaff' element={<Adminhealthstaff/>} />
     <Route path='Addasha' element={<Addasha/>} />
+    <Route path='Addhealth' element={<Addhealth/>} />
+
 
 
 

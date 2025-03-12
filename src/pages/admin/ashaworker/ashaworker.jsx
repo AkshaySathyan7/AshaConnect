@@ -50,18 +50,18 @@ const AdminAshaworker = () => {
                 <TableCell align="right" className={Styles.TableCell}></TableCell>
                 <TableCell sx={{ fontFamily: 'fantasy' }}>Name</TableCell>
                 <TableCell align="right" sx={{ fontFamily: 'fantasy' }}>Email</TableCell>
-                <TableCell align="right" sx={{ fontFamily: 'fantasy' }}>Address</TableCell>
-                <TableCell align="right" sx={{ fontFamily: 'fantasy' }}>Contact</TableCell>
+                <TableCell align="right" sx={{ fontFamily: 'fantasy' }}>Place</TableCell>
+                <TableCell align="right" sx={{ fontFamily: 'fantasy' }}>Ward Number</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {userRows.map((user, index) => (
                 <TableRow key={index}>
                   <TableCell>{index + 1}</TableCell>
-                  <TableCell>{user.name}</TableCell>
+                  <TableCell>{user.ashaWorkerName}</TableCell>
                   <TableCell align="right">{user.email}</TableCell>
-                  <TableCell align="right">{user.address}</TableCell>
-                  <TableCell align="right">{user.contact}</TableCell>
+                  <TableCell align="right">{user.place}</TableCell>
+                  <TableCell align="right">{user.wardNumber}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
