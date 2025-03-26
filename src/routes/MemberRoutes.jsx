@@ -5,7 +5,8 @@ import MemberMain from '../pages/member/main/main'
 import HealthReport from '../pages/member/healthreport/healthreport'
 import UpdateMember from '../pages/member/updateprofile/updatemember'
 import FamilyMem from '../pages/member/family/family'
-import ChatSingle from '../pages/member/chatsingle/chatsingle'
+import ChatInterface from '../pages/member/chatsingle/chatsingle'
+import EmergencyCon from '../pages/member/emergency/emergency'
 
 
 
@@ -17,7 +18,9 @@ const MemberRoutes = () => {
     <Route path='HealthReport' element={<HealthReport/>} />
     <Route path='UpdateMember' element={<UpdateMember/>} />
     <Route path='FamilyMem' element={<FamilyMem/>} />
-    <Route path='ChatSingle' element={<ChatSingle/>} />
+    <Route path='ChatInterface' element={<ChatInterface/>} />
+    <Route path='EmergencyCon' element={<EmergencyCon/>} />
+
 
 
 

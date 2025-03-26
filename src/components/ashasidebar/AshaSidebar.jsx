@@ -1,6 +1,6 @@
 import React from 'react';
-import { FaTachometerAlt, FaClipboardList, FaBell, FaUsers, FaSignOutAlt, FaHeart, FaUserCircle } from 'react-icons/fa'; // Imported new icons
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { FaTachometerAlt, FaClipboardList, FaBell, FaUsers, FaSignOutAlt, FaHeart, FaUserCircle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import Styles from './AshaSidebar.module.css';
 
 const AshaSidebar = () => {
@@ -8,11 +8,10 @@ const AshaSidebar = () => {
     <div className={Styles.sidebar}>
       {/* Sidebar Links Section */}
       <div className={Styles.sidebarLinks}>
-        
         <Link to="/asha/MembersView" className={Styles.sidebarLink}>
           <FaUsers className={Styles.icon} /> Community Members
         </Link>
-        <Link to="/health-monitoring" className={Styles.sidebarLink}>
+        <Link to="/asha/HealthReportDisplay" className={Styles.sidebarLink}>
           <FaClipboardList className={Styles.icon} /> Health Monitoring
         </Link>
         <Link to="/chat-notifications" className={Styles.sidebarLink}>

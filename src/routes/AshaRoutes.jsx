@@ -5,6 +5,7 @@ import AshaMain from '../pages/ashaworker/main/main'
 import MembersView from '../pages/ashaworker/members/members'
 import UpdateAsha from '../pages/ashaworker/updateprofile/updateprofile'
 import Logout from '../pages/logout/logout'
+import HealthReportDisplay from '../pages/ashaworker/healthreport/healthreport'
 
 
 
@@ -16,6 +17,8 @@ const AshaRoutes = () => {
     <Route path='MembersView' element={<MembersView/>} />
     <Route path='UpdateAsha' element={<UpdateAsha/>} />
     <Route path='Logout' element={<Logout/>} />
+    <Route path='HealthReportDisplay' element={<HealthReportDisplay/>} />
+
 
 
 

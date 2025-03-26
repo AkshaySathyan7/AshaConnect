@@ -18,23 +18,48 @@ import {
 import SendIcon from '@mui/icons-material/Send';
 import Brightness4Icon from '@mui/icons-material/Brightness4'; // Dark mode icon
 import Brightness7Icon from '@mui/icons-material/Brightness7'; // Light mode icon
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'; // Back arrow icon
 import axios from 'axios';
 
-const ChatInterface = ({ userId, ashaWorkerId }) => {
+const ChatInterface = ({ userId }) => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const [ashaWorker, setAshaWorker] = useState(null); // Store the corresponding ASHA worker
   const [darkMode, setDarkMode] = useState(false); // State for dark/light mode
   const messagesEndRef = useRef(null);
 
+  // Fetch the corresponding ASHA worker based on the user's ward number
+  useEffect(() => {
+    const fetchAshaWorker = async () => {
+      try {
+        // Fetch the user's ward number
+        const userResponse = await axios.get(`http://localhost:5005/users/${userId}`);
+        const userWardNumber = userResponse.data.wardNumber;
+
+        // Fetch the ASHA worker with the same ward number
+        const ashaWorkerResponse = await axios.get(`http://localhost:5005/ashaWorkers?wardNumber=${userWardNumber}`);
+        if (ashaWorkerResponse.data.length > 0) {
+          setAshaWorker(ashaWorkerResponse.data[0]); // Set the first ASHA worker found
+        }
+      } catch (error) {
+        console.error('Error fetching ASHA worker:', error);
+      }
+    };
+
+    fetchAshaWorker();
+  }, [userId]);
+
   // Fetch messages from the backend
   const fetchMessages = async () => {
-    try {
-      const response = await axios.get('http://localhost:5005/api/messages', {
-        params: { userId, ashaWorkerId },
-      });
-      setMessages(response.data);
-    } catch (error) {
-      console.error('Error fetching messages:', error);
+    if (ashaWorker) {
+      try {
+        const response = await axios.get('http://localhost:5005/api/messages', {
+          params: { userId, ashaWorkerId: ashaWorker._id },
+        });
+        setMessages(response.data);
+      } catch (error) {
+        console.error('Error fetching messages:', error);
+      }
     }
   };
 
@@ -43,7 +68,7 @@ const ChatInterface = ({ userId, ashaWorkerId }) => {
     fetchMessages();
     const interval = setInterval(fetchMessages, 2000); // Poll every 2 seconds
     return () => clearInterval(interval);
-  }, [userId, ashaWorkerId]);
+  }, [userId, ashaWorker]);
 
   // Scroll to the bottom of the chat when new messages are added
   useEffect(() => {
@@ -52,11 +77,11 @@ const ChatInterface = ({ userId, ashaWorkerId }) => {
 
   // Send a new message
   const sendMessage = async () => {
-    if (message.trim()) {
+    if (message.trim() && ashaWorker) {
       try {
         await axios.post('http://localhost:5005/api/messages', {
           sender: userId,
-          receiver: ashaWorkerId,
+          receiver: ashaWorker._id,
           text: message,
           timestamp: new Date().toLocaleTimeString(),
         });
@@ -78,88 +103,131 @@ const ChatInterface = ({ userId, ashaWorkerId }) => {
     palette: {
       mode: darkMode ? 'dark' : 'light',
       background: {
-        default: darkMode ? '#121212' : '#ffffff',
+        default: darkMode ? '#121212' : '#fafafa',
         paper: darkMode ? '#1e1e1e' : '#ffffff',
       },
     },
   });
 
   return (
+    <div style={{marginLeft:'20%', marginTop:'-40%',marginBottom:'30%'}}>
     <ThemeProvider theme={theme}>
       <CssBaseline /> {/* Apply the theme to the entire app */}
-      <Box sx={{ display: 'flex', height: '100vh', width: '100vw' }}>
-        {/* Left Sidebar with Dark/Light Mode Toggle */}
+      <Box
+        sx={{
+          display: 'flex',
+          height: 'auto',
+          width: 'auto',
+          backgroundColor: darkMode ? '#121212' : '#fafafa',
+        }}
+      >
+        {/* Chat Interface */}
         <Box
           sx={{
-            width: '64px',
-            backgroundColor: darkMode ? '#1e1e1e' : '#f5f5f5',
+            flexGrow: 1,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            padding: 2,
-            borderRight: '1px solid #ddd',
+            maxWidth: '100%',
+            margin: 'auto',
+            backgroundColor: darkMode ? '#1e1e1e' : '#ffffff',
+            boxShadow: 3,
+            borderRadius: 2,
+            overflow: 'hidden',
           }}
         >
-          <IconButton onClick={toggleDarkMode} color="inherit">
-            {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
-          </IconButton>
-        </Box>
-
-        {/* Chat Interface */}
-        <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
           {/* Header */}
           <Box
             sx={{
               display: 'flex',
               alignItems: 'center',
-              padding: 2,
-              backgroundColor: darkMode ? '#1e1e1e' : '#075e54',
-              color: darkMode ? '#ffffff' : '#ffffff',
+              justifyContent: 'space-between',
+              padding: '12px 16px',
+              backgroundColor: darkMode ? '#262626' : '#ffffff',
+              borderBottom: '1px solid #dbdbdb',
             }}
           >
-            <Avatar sx={{ marginRight: 2 }}>A</Avatar>
-            <Box>
-              <Typography variant="h6">ASHA Worker</Typography>
-              <Typography variant="body2">Online</Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <IconButton>
+                <ArrowBackIcon sx={{ color: darkMode ? '#ffffff' : '#000000' }} />
+              </IconButton>
+              <Avatar sx={{ width: 40, height: 40 }}>A</Avatar>
+              <Typography variant="h6" sx={{ color: darkMode ? '#ffffff' : '#000000' }}>
+                {ashaWorker ? ashaWorker.name : 'ASHA Worker'}
+              </Typography>
             </Box>
+            <IconButton onClick={toggleDarkMode} color="inherit">
+              {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
           </Box>
 
           {/* Chat Messages */}
-          <Paper
+          <Box
             sx={{
               flexGrow: 1,
               overflowY: 'auto',
-              padding: 2,
-              backgroundColor: darkMode ? '#121212' : '#ece5dd',
+              padding: '16px',
+              backgroundColor: darkMode ? '#121212' : '#fafafa',
             }}
           >
             <List>
               {messages.map((msg, index) => (
-                <ListItem key={index} sx={{ justifyContent: msg.sender === userId ? 'flex-end' : 'flex-start' }}>
-                  <Paper
+                <ListItem
+                  key={index}
+                  sx={{
+                    justifyContent: msg.sender === userId ? 'flex-end' : 'flex-start',
+                    padding: 0,
+                    marginBottom: 1,
+                  }}
+                >
+                  <Box
                     sx={{
-                      padding: 1,
-                      backgroundColor: msg.sender === userId ? (darkMode ? '#004d40' : '#dcf8c6') : darkMode ? '#333333' : '#ffffff',
-                      borderRadius: msg.sender === userId ? '15px 15px 0 15px' : '15px 15px 15px 0',
                       maxWidth: '70%',
-                      boxShadow: 1,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: msg.sender === userId ? 'flex-end' : 'flex-start',
                     }}
                   >
-                    <ListItemText primary={msg.text} secondary={msg.timestamp} />
-                  </Paper>
+                    <Paper
+                      sx={{
+                        padding: '8px 12px',
+                        backgroundColor:
+                          msg.sender === userId
+                            ? darkMode
+                              ? '#0095f6'
+                              : '#efefef'
+                            : darkMode
+                            ? '#262626'
+                            : '#ffffff',
+                        borderRadius:
+                          msg.sender === userId
+                            ? '18px 18px 0 18px'
+                            : '18px 18px 18px 0',
+                        boxShadow: 1,
+                      }}
+                    >
+                      <ListItemText
+                        primary={msg.text}
+                        secondary={msg.timestamp}
+                        sx={{
+                          color: msg.sender === userId ? (darkMode ? '#ffffff' : '#000000') : darkMode ? '#ffffff' : '#000000',
+                        }}
+                      />
+                    </Paper>
+                  </Box>
                 </ListItem>
               ))}
               <div ref={messagesEndRef} />
             </List>
-          </Paper>
+          </Box>
 
           {/* Input Area */}
           <Box
             sx={{
               display: 'flex',
-              padding: 2,
-              backgroundColor: darkMode ? '#1e1e1e' : '#f5f5f5',
-              borderTop: '1px solid #ddd',
+              alignItems: 'center',
+              padding: '8px 16px',
+              backgroundColor: darkMode ? '#262626' : '#ffffff',
+              borderTop: '1px solid #dbdbdb',
             }}
           >
             <TextField
@@ -177,18 +245,18 @@ const ChatInterface = ({ userId, ashaWorkerId }) => {
                 },
               }}
             />
-            <Button
-              variant="contained"
+            <IconButton
               color="primary"
-              sx={{ marginLeft: 2, borderRadius: '50%', minWidth: '50px' }}
+              sx={{ marginLeft: 2 }}
               onClick={sendMessage}
             >
               <SendIcon />
-            </Button>
+            </IconButton>
           </Box>
         </Box>
       </Box>
     </ThemeProvider>
+    </div>
   );
 };
 

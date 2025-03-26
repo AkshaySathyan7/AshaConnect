@@ -13,13 +13,13 @@ const AshaSidebar = () => {
         <Link to="/member/HealthReport" className={Styles.sidebarLink}>
           <FaClipboardList className={Styles.icon} /> Health Report
         </Link>
-        <Link to="/member/ChatSingle" className={Styles.sidebarLink}>
+        <Link to="/member/ChatInterface" className={Styles.sidebarLink}>
           <FaBell className={Styles.icon} /> Chat
         </Link>
         <Link to="/group-chat" className={Styles.sidebarLink}>
           <FaUsers className={Styles.icon} /> Group Chat
         </Link>
-        <Link to="/emergency-contact" className={Styles.sidebarLink}>
+        <Link to="/member/EmergencyCon" className={Styles.sidebarLink}>
           <FaPhoneAlt className={Styles.icon} /> Emergency Contact
         </Link>
         <Link to="/member/UpdateMember" className={Styles.sidebarLink}>

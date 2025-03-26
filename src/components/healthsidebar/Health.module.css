@@ -1,104 +1,82 @@
-/* General Sidebar Styles */
+/* General Styling for Sidebar */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;  /* Clean modern font */
-}
-
-.sidebar {
+  }
+  
+  .sidebar {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    margin-top: 4%;
     height: 100vh;
-    width: 260px;  /* Adequate width for icons and text */
-    background: linear-gradient(to bottom right, #00bcd4, #8e44ad);  /* Vibrant gradient from teal to purple */
-    color: #f5f5f5;  /* Light text for contrast */
-    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.1);  /* Light shadow for depth */
-    border-right: 2px solid #8e44ad;  /* Border matching the purple tone */
-    padding-top: 40px;
-    padding-left: 30px;
-    transition: all 0.3s ease-in-out;
-    z-index: 999;  /* Ensures sidebar stays above content */
-}
-
-/* Logo Section (optional, you can add a logo if needed) */
-.sidebar .logo span {
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: #ffffff;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-}
-
-/* Sidebar Links Section */
-.sidebarLinks {
+    width: 230px; /* Smaller sidebar width */
+    background: #f9f9f9; /* Whitish background */
+    color: #333; /* Dark text for contrast */
+    box-shadow: 4px 0 12px rgba(39, 38, 38, 0.1); /* Subtle shadow */
+    border-right: 1px solid #e0e0e0; /* Light border */
+    padding-top: 80px;
+    padding-left: 20px;
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  .sidebarLinks {
     display: flex;
     flex-direction: column;
-    gap: 25px;  /* Adequate gap between links */
-}
-
-.sidebarLink {
+    gap: 25px; /* Vertical gap between links */
+  }
+  
+  .sidebarLink {
     text-decoration: none;
-    font-size: 18px;
-    color: #f5f5f5;
-    font-weight: 600;
+    font-size: 16px; /* Smaller font size */
+    color: #555; /* Slightly darker text */
+    font-weight: 500;
     position: relative;
-    padding-bottom: 8px;
+    padding-bottom: 5px;
     display: flex;
     align-items: center;
-    gap: 18px;  /* Adequate gap between icon and text */
-    transition: transform 0.3s ease, color 0.3s ease, margin-left 0.3s ease;
-}
-
-/* Hover Effect for Sidebar Links */
-.sidebarLink:hover {
-    color: #f39c12;  /* Gold accent on hover */
-    transform: translateX(4px);  /* Smooth slide effect */
-    margin-left: 9px;  /* Adds a sliding effect */
-}
-
-.sidebarLink:hover .icon {
-    color: #f39c12;  /* Change icon color on hover */
-}
-
-/* Icon Styling */
-.icon {
-    font-size: 24px;  /* Increased icon size for clarity */
-    color: #f5f5f5;  /* Icon starts as white */
+    gap: 10px; /* Smaller gap between icon and text */
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+  }
+  
+  /* Hover Effect for Sidebar Links */
+  .sidebarLink:hover {
+    color: #00bcd4; /* Accent color on hover */
+    transform: translateX(5px); /* Slight move to the right */
+  }
+  
+  .sidebarLink:hover .icon {
+    color: #00bcd4; /* Change icon color on hover */
+  }
+  
+  /* Icon styling */
+  .icon {
+    font-size: 16px; /* Smaller icon size */
     transition: color 0.3s ease;
-}
-
-/* Underline Animation on Hover */
-.sidebarLink::after {
+  }
+  
+  /* Underline Animation on Hover */
+  .sidebarLink::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 2px;
-    background-color: #f39c12;  /* Underline color to match hover effect */
+    height: 1px;
+    background-color: #00bcd4; /* Underline color */
     transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
-}
-
-.sidebarLink:hover::after {
+  }
+  
+  .sidebarLink:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
-}
-
-/* Focus Effect */
-.sidebarLink:focus {
-    outline: none;  /* Remove default outline */
-    border-bottom: 2px solid #f39c12;  /* Underline on focus */
-}
-
-/* Active link styling (optional) */
-.sidebarLink.active {
-    color: #f39c12;  /* Active link color */
-    font-weight: 700;  /* Bold the active link */
-}
+  }
+  
+  .sidebarLink:focus {
+    outline: none; /* Remove default outline */
+    border-bottom: 1px solid #00bcd4; /* Border on focus for accessibility */
+  }
